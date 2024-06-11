@@ -3,6 +3,7 @@ package umag.repo;
 import org.intellij.lang.annotations.Language;
 import umag.util.SafeFunction;
 
+import java.util.Date;
 import java.sql.*;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
@@ -113,7 +114,14 @@ public class SQLManager {
         System.out.println(query);
         PreparedStatement st = conn.prepareStatement(query);
         for (int i = 0; i < params.length; i++) {
-            st.setObject(i + 1, params[i]);
+            Object obj = params[i];
+            if (obj instanceof java.util.Date date) {
+                System.out.println(date);
+                st.setDate(i + 1, new java.sql.Date(date.toInstant().toEpochMilli()));
+                continue;
+            }
+
+            st.setObject(i + 1, obj);
         }
         return st;
     }

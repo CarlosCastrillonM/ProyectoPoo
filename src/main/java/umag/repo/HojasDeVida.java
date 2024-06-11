@@ -18,11 +18,12 @@ public class HojasDeVida extends AbstractRepositorio<HojaDeVida>{
 
     public CompletableFuture<HojaDeVida> crearHojaDeVida(String nombre, String apellido, int cedula, Date fechaNacimiento, String correo, int telefono, String direccion, String profesion) {
         return SQLManager.executeQuery("""
-                INSERT INTO hoja_de_vida (nombre, apellido, cedula, fecha_de_nacimiento, correo, telefono, direccion, telefono, profesion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id_hoja_de_vida""", nombre, apellido, cedula, fechaNacimiento, correo, telefono, direccion, telefono, profesion)
+                INSERT INTO hoja_de_vida (nombre, apellido, cedula, fecha_de_nacimiento, correo, direccion, telefono, profesion) VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING id_hoja_de_vida""", nombre, apellido, cedula, fechaNacimiento, correo, direccion, telefono, profesion)
                 .thenApply(id -> {
                     try {
                         id.next();
-                        return new HojaDeVida(id.getInt(1), nombre, apellido, cedula, fechaNacimiento, direccion, telefono, correo, profesion);
+                        return add(new HojaDeVida(id.getInt(1), nombre, apellido, cedula,
+                            fechaNacimiento, direccion, telefono, correo, profesion));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

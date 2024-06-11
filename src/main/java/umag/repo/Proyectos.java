@@ -21,11 +21,11 @@ public class Proyectos extends AbstractRepositorio<Proyecto> {
 
     public CompletableFuture<Proyecto> crearProyecto(String nombre, String descripcion, Cliente cliente, Admin admin) {
         return SQLManager.executeQuery("""
-            INSERT INTO proyecto (nombre, descripcion, id_cliente, id_admin) VALUES (?, ?, ?) RETURNING id_proyecto""", nombre, descripcion, cliente.getId(), admin.getId())
+            INSERT INTO proyecto (nombre, descripcion, id_cliente, id_admin) VALUES (?, ?, ?, ?) RETURNING id_proyecto""", nombre, descripcion, cliente.getId(), admin.getId())
                 .thenApply(id -> {
                     try {
                         id.next();
-                        return new Proyecto(id.getInt(1), nombre, descripcion, cliente, new ArrayList<>());
+                        return add(new Proyecto(id.getInt(1), nombre, descripcion, cliente, new ArrayList<>()));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

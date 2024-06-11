@@ -18,6 +18,9 @@ public class Admin extends Cuenta {
         proyectos = new ArrayList<>();
     }
 
+    public Admin() {
+    }
+
     @Override
     protected void loadRowAttributes(ResultSet rs) throws SQLException {
 

@@ -42,15 +42,15 @@ public class HojaDeVida implements Guardable {
 
     @Override
     public void loadRow(ResultSet rs) throws SQLException {
-        id = rs.getInt("hoja_de_vida.id_hoja_de_vida");
-        nombre = rs.getString("hoja_de_vida.nombre");
-        apellido = rs.getString("hoja_de_vida.apellido");
-        cedula = rs.getInt("hoja_de_vida.cedula");
-        fechaNacimiento = rs.getDate("hoja_de_vida.fecha_de_nacimiento");
-        direccion = rs.getString("hoja_de_vida.direccion");
-        telefono = rs.getInt("hoja_de_vida.telefono");
-        correo = rs.getString("hoja_de_vida.correo");
-        profesion = rs.getString("hoja_de_vida.profesion");
+        id = rs.getInt("id_hoja_de_vida");
+        nombre = rs.getString("nombre");
+        apellido = rs.getString("apellido");
+        cedula = rs.getInt("cedula");
+        fechaNacimiento = rs.getDate("fecha_de_nacimiento");
+        direccion = rs.getString("direccion");
+        telefono = rs.getInt("telefono");
+        correo = rs.getString("correo");
+        profesion = rs.getString("profesion");
     }
 
     public String getNombre() {
