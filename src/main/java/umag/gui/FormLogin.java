@@ -43,7 +43,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnRegistrarse = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAqui = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -56,7 +56,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/umag/gui/EmpleaPlusLogoFondo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EmpleaPlusLogoFondo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -175,15 +175,25 @@ public class FormLogin extends javax.swing.JFrame {
         btnRegistrarse.setBorderPainted(false);
         btnRegistrarse.setContentAreaFilled(false);
         btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarseActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Si eres una empresa registrate");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Aqui");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAqui.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAqui.setText("Aqui");
+        btnAqui.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAqui.setBorderPainted(false);
+        btnAqui.setContentAreaFilled(false);
+        btnAqui.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAqui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAquiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -204,7 +214,7 @@ public class FormLogin extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnAqui))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(lblNoTienesUnaCuenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -229,7 +239,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1))
+                    .addComponent(btnAqui))
                 .addGap(18, 18, 18)
                 .addComponent(btnAcceder, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(59, Short.MAX_VALUE))
@@ -298,6 +308,25 @@ public class FormLogin extends javax.swing.JFrame {
         txtContraseñaCorreo.setText("");
     }//GEN-LAST:event_txtContraseñaCorreoFocusGained
 
+    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+        // TODO add your handling code here:
+        
+        FormHojaDeVida fHojaVida = new FormHojaDeVida();
+        
+        fHojaVida.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnRegistrarseActionPerformed
+
+    private void btnAquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAquiActionPerformed
+        // TODO add your handling code here:
+        
+        FormRegistroCliente fRegCliente = new FormRegistroCliente();
+        
+        fRegCliente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAquiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,8 +364,8 @@ public class FormLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceder;
+    private javax.swing.JButton btnAqui;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
