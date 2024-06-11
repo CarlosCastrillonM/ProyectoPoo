@@ -108,14 +108,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Talento Humano"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opTalentoHumanoActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="opOfertasDisponibles">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ofertas Disponibles"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opOfertasDisponiblesActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

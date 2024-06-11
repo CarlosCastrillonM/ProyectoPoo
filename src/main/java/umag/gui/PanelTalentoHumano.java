@@ -10,13 +10,13 @@ import umag.datos.Oferta;
  *
  * @author kmilo
  */
-public class PanelOferta extends javax.swing.JPanel {
+public class PanelTalentoHumano extends javax.swing.JPanel {
     private Oferta oferta;
 
     /**
      * Creates new form PanelOferta
      */
-    public PanelOferta() {
+    public PanelTalentoHumano() {
         initComponents();
     }
 
@@ -34,13 +34,14 @@ public class PanelOferta extends javax.swing.JPanel {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(100, 32767));
         btnVerMas = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 10), new java.awt.Dimension(20, 100), new java.awt.Dimension(20, 32767));
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Título de la oferta de trabajo");
+        jLabel1.setText("Nombre y Apellidos del Talento H");
 
-        jLabel2.setText("Descripción de la oferta de trabajo");
+        jLabel2.setText("Correo electronico");
 
         btnVerMas.setText("Ver más");
         btnVerMas.addActionListener(new java.awt.event.ActionListener() {
@@ -49,6 +50,8 @@ public class PanelOferta extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Profesión");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,9 +59,14 @@ public class PanelOferta extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerMas)
@@ -72,24 +80,27 @@ public class PanelOferta extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(filler3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnVerMas)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(16, 16, 16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addGap(0, 11, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVerMas)
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMasActionPerformed
         // TODO add your handling code here:
         
-        FormOfertaExpandida fOfertaE = new FormOfertaExpandida();
+        FormTalentoHumExpandido fTalHum = new FormTalentoHumExpandido();
         
-        fOfertaE.setVisible(true);
+        fTalHum.setVisible(true);
     }//GEN-LAST:event_btnVerMasActionPerformed
 
 
@@ -99,5 +110,6 @@ public class PanelOferta extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

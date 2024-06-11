@@ -15,16 +15,16 @@ import java.io.ObjectOutputStream;
  *
  * @author carla
  */
-public class FormAdmin extends javax.swing.JFrame {
+public class FormTalentoHumano extends javax.swing.JFrame {
     
-    private PanelOferta oferta = new PanelOferta();
+    private PanelTalentoHumano pTalHum = new PanelTalentoHumano();
 
     /**
      * Creates new form FormMisOfertas
      */
-    public FormAdmin() {
+    public FormTalentoHumano() {
         initComponents();
-        opOfertasDisponibles.setEnabled(false);
+        opTalentoHumano.setEnabled(false);
     }
 
     /**
@@ -143,14 +143,14 @@ public class FormAdmin extends javax.swing.JFrame {
         jMenu2.setText("Ver");
 
         opTalentoHumano.setText("Talento Humano");
-        opTalentoHumano.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opTalentoHumanoActionPerformed(evt);
-            }
-        });
         jMenu2.add(opTalentoHumano);
 
         opOfertasDisponibles.setText("Ofertas Disponibles");
+        opOfertasDisponibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opOfertasDisponiblesActionPerformed(evt);
+            }
+        });
         jMenu2.add(opOfertasDisponibles);
 
         jMenuBar1.add(jMenu2);
@@ -176,22 +176,22 @@ public class FormAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
-        PanelOferta pp = new PanelOferta();
+        PanelTalentoHumano pt = new PanelTalentoHumano();
 
-        jPanel3.add(pp);
+        jPanel3.add(pt);
         jPanel3.add(cloneSwingComponent(jSeparator2));
         jScrollPane2.updateUI();
         //        this.update(this.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void opTalentoHumanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opTalentoHumanoActionPerformed
+    private void opOfertasDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opOfertasDisponiblesActionPerformed
         // TODO add your handling code here:
         
-        FormTalentoHumano fTalentoH = new FormTalentoHumano();
+        FormAdmin fAdmin = new FormAdmin();
         
-        fTalentoH.setVisible(true);
+        fAdmin.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_opTalentoHumanoActionPerformed
+    }//GEN-LAST:event_opOfertasDisponiblesActionPerformed
 
     private <C extends Component> C cloneSwingComponent(C c) {
     try {
@@ -224,21 +224,23 @@ public class FormAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTalentoHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTalentoHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTalentoHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormTalentoHumano.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormAdmin().setVisible(true);
+                new FormTalentoHumano().setVisible(true);
             }
         });
     }
