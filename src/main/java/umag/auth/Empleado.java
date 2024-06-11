@@ -37,7 +37,7 @@ public class Empleado extends Cuenta {
     }
 
     @Override
-    public String @Language("postgresql") [] getSQLInserts() {
+    public @Language("postgresql") String[] getSQLInserts() {
         @Language("postgresql")
         String empIns = """
             INSERT INTO empleados (id_empleado, id_hoja_de_vida) VALUES (?, ?)

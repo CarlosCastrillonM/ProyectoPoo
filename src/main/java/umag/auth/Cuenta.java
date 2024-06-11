@@ -93,7 +93,7 @@ public abstract class Cuenta implements Guardable {
      * @return los insert de la consulta para ser ejecutado al mismo tiempo
      * que el insert de la cuenta genérica en la tabla "cuenta"
      */
-    public abstract String @Language("postgresql") [] getSQLInserts();
+    public abstract @Language("postgresql") String[] getSQLInserts();
 
     /**
      * Diseñado para las clases que heredan de esta que puedan guardar sus

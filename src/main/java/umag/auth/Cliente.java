@@ -22,7 +22,7 @@ public class Cliente extends Cuenta {
     }
 
     @Override
-    public String @Language("postgresql") [] getSQLInserts() {
+    public @Language("postgresql") String[] getSQLInserts() {
         @Language("postgresql")
         String cliIns = """
             INSERT INTO cliente (id_cliente, nombre) VALUES (?, ?)

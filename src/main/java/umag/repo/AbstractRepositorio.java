@@ -1,8 +1,10 @@
 package umag.repo;
 
+import org.intellij.lang.annotations.Language;
 import umag.model.Cargable;
 import umag.model.Repositorio;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -32,15 +34,17 @@ public abstract class AbstractRepositorio<T extends Cargable> implements Reposit
 
     public T createInstance() {
         try {
-            return getEntityClass().newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return getEntityClass().getDeclaredConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
             return null;
         }
     }
 
     public void loadAll() {
-        SQLManager.executeQuery("SELECT * FROM " + getTableName()).thenAccept(rs -> {
+        @Language("postgresql")
+        String query = "SELECT * FROM " + getTableName() + ";";
+        SQLManager.executeQuery(query).thenAccept(rs -> {
             try {
                 while (rs.next()) {
                     loadRow(rs);

@@ -8,7 +8,7 @@ import java.util.concurrent.CompletableFuture;
 public class Clientes extends AbstractRepositorio<Cliente> {
     @Override
     public String getTableName() {
-        return "clientes JOIN cuenta ON clientes.id_cliente = cuenta.id_cuenta";
+        return "cliente JOIN cuenta ON cliente.id_cliente = cuenta.id_cuenta";
     }
 
     @Override
