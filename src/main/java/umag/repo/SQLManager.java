@@ -37,7 +37,7 @@ public class SQLManager {
             `telefono` INT NOT NULL,
             `correo` VARCHAR(45) NOT NULL,
             `profesion` VARCHAR(45) NOT NULL,
-            `aptitudes` VARCHAR(45) NOT NULL,                                      
+            `aptitudes` VARCHAR(45) NOT NULL,                                    
             PRIMARY KEY (`id`)
         );
         """;
