@@ -19,14 +19,18 @@ public class Administradores extends AbstractRepositorio<Admin> {
     public CompletableFuture<Admin> crearAdmin(String usuario, String correo) {
         return SQLManager.executeQuery("""
                 INSERT INTO cuenta (correo, usuario, tipo) VALUES (?, ?, ?) RETURNING id_cuenta""", correo, usuario, "admin")
-                .thenCompose(id -> SQLManager.executeQuery("INSERT INTO admin (id_admin) VALUES (?)", id).thenApply(v -> {
+                .thenCompose(rs -> {
+                    System.out.println("a");
+                    int id;
                     try {
-                        id.next();
-                        return id.getInt(1);
+                        rs.next();
+                        id = rs.getInt(1);
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                }))
+                    System.out.println("id: " + id);
+                    return SQLManager.executeQuery("INSERT INTO admin (id_admin) VALUES (?)", id).thenApply(v -> id);
+                })
                 .thenApply(id -> new Admin(id, usuario, correo));
     }
 }

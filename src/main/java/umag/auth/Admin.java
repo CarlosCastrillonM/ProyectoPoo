@@ -24,7 +24,7 @@ public class Admin extends Cuenta {
     }
 
     @Override
-    public String @Language("postgresql") [] getSQLInserts() {
+    public @Language("postgresql") String[] getSQLInserts() {
         @Language ("postgresql")
         String admIns = "INSERT INTO admin (id_admin) VALUES (?) ON CONFLICT DO NOTHING";
         return new String[]{

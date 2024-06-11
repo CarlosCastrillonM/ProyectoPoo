@@ -6,6 +6,7 @@ import umag.util.SafeFunction;
 import java.sql.*;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class SQLManager {
     @Language("postgresql")
@@ -80,7 +81,7 @@ public class SQLManager {
     public static void createTables() {
         try {
             Statement st = conn.createStatement();
-            st.execute(CREATE_TABLE_APTITUDES);
+//            st.execute(CREATE_TABLE_APTITUDES);
 //            st.execute(CREATE_TABLE_CUENTA);
 //            st.execute(CREATE_TABLE_);
 //            st.execute(CREATE_TABLE_A);
@@ -91,7 +92,17 @@ public class SQLManager {
     }
 
     public static CompletableFuture<ResultSet> executeQuery(@Language("postgresql") String query,  Object... params) {
-        return executeOperation(query, params, PreparedStatement::executeQuery);
+        CompletableFuture<ResultSet> cf = new CompletableFuture<>();
+        executeOperation(query, params, preparedStatement -> {
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                cf.complete(rs);
+            } catch (Throwable e) {
+//                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+            return null;
+        });
+        return cf;
     }
 
     public static CompletableFuture<Integer> executeUpdate(@Language("postgresql") String query,  Object... params) {
@@ -99,6 +110,7 @@ public class SQLManager {
     }
 
     public static PreparedStatement createStatement(@Language("postgresql") String query,  Object... params) throws SQLException {
+        System.out.println(query);
         PreparedStatement st = conn.prepareStatement(query);
         for (int i = 0; i < params.length; i++) {
             st.setObject(i + 1, params[i]);
@@ -107,14 +119,28 @@ public class SQLManager {
     }
 
     private static synchronized <T> CompletableFuture<T> executeOperation(@Language("postgresql") String query, Object[] params, SafeFunction<PreparedStatement, T> supplier) {
+        AtomicReference<PreparedStatement> at = new AtomicReference<>();
         return CompletableFuture.supplyAsync(() -> {
             try {
                 PreparedStatement ps = createStatement(query, params);
-                T t = supplier.applySafe(ps);
-                ps.close();
-                return t;
-            } catch (Exception e) {
+                at.set(ps);
+
+                return supplier.applySafe(ps);
+            } catch (Throwable e) {
                 throw new RuntimeException(e);
+            }
+        }).whenComplete((t, e) -> {
+            if (e != null) {
+                e.printStackTrace();
+            }
+
+            PreparedStatement ps = at.get();
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
