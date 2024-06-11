@@ -4,6 +4,9 @@
  */
 package umag.gui;
 
+import umag.auth.Admin;
+import umag.repo.Repositorios;
+
 import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,15 +19,24 @@ import java.io.ObjectOutputStream;
  * @author carla
  */
 public class FormAdmin extends javax.swing.JFrame {
-    
-    private PanelOferta oferta = new PanelOferta();
 
     /**
      * Creates new form FormMisOfertas
      */
     public FormAdmin() {
         initComponents();
+
+//        this.admin = cuenta;
         opOfertasDisponibles.setEnabled(false);
+
+        Repositorios.OFERTAS.getAll().forEach(oferta -> {
+            javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+            PanelOferta pp = new PanelOferta(oferta);
+            jPanel3.add(pp);
+            jPanel3.add(cloneSwingComponent(jSeparator1));
+        });
+
+        jScrollPane2.updateUI();
     }
 
     /**
@@ -42,11 +54,11 @@ public class FormAdmin extends javax.swing.JFrame {
         lblPrecio = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jSeparator2 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         opTalentoHumano = new javax.swing.JMenuItem();
@@ -95,6 +107,13 @@ public class FormAdmin extends javax.swing.JFrame {
         jSeparator2.setOpaque(true);
         jSeparator2.setPreferredSize(new java.awt.Dimension(0, 15));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(117, 171, 255));
@@ -110,21 +129,12 @@ public class FormAdmin extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jPanel3);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(87, 87, 87)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -134,10 +144,6 @@ public class FormAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(15, 15, 15))
         );
 
         jMenu2.setText("Ver");
@@ -175,12 +181,6 @@ public class FormAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
-        PanelOferta pp = new PanelOferta();
-
-        jPanel3.add(pp);
-        jPanel3.add(cloneSwingComponent(jSeparator2));
-        jScrollPane2.updateUI();
         //        this.update(this.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 

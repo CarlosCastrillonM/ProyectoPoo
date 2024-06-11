@@ -4,6 +4,9 @@
  */
 package umag.gui;
 
+import umag.auth.Cliente;
+import umag.repo.Repositorios;
+
 import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -205,7 +208,7 @@ public class FormMisOfertas extends javax.swing.JFrame {
     private void chkPublicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPublicarOfertaActionPerformed
         // TODO add your handling code here:
         
-        FormPublicarOferta fPublicarOferta = new FormPublicarOferta();
+        FormPublicarOferta fPublicarOferta = new FormPublicarOferta((Cliente) FormLogin.SESION);
         fPublicarOferta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_chkPublicarOfertaActionPerformed
@@ -241,13 +244,23 @@ public class FormMisOfertas extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
-        PanelOferta pp = new PanelOferta();
-        
-        jPanel3.add(pp);
-        jPanel3.add(cloneSwingComponent(jSeparator2));
+
+        System.out.println("a");
+        Repositorios.OFERTAS.getAll().forEach(oferta -> {
+            System.out.println(oferta);
+            javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+            PanelOferta pp = new PanelOferta(oferta);
+            jPanel3.add(pp);
+            jPanel3.add(cloneSwingComponent(jSeparator1));
+        });
+
         jScrollPane2.updateUI();
+//        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+//        PanelOferta pp = new PanelOferta();
+//
+//        jPanel3.add(pp);
+//        jPanel3.add(cloneSwingComponent(jSeparator2));
+//        jScrollPane2.updateUI();
 //        this.update(this.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 

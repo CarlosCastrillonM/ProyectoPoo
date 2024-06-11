@@ -4,18 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.intellij.lang.annotations.Language;
 import umag.datos.Proyecto;
+import umag.repo.Repositorios;
 
 public class Admin extends Cuenta {
 
-    // La lista se popula con base a los proyectos que se están cargando
-    ArrayList<Proyecto> proyectos;
-    
     public Admin(int id, String usuario, String correo) {
         super(id, usuario, "admin", correo);
-        proyectos = new ArrayList<>();
     }
 
     public Admin() {
@@ -40,5 +38,10 @@ public class Admin extends Cuenta {
         return new Object[][]{
             {getId()}
         };
+    }
+
+    public List<Proyecto> getProyectos() {
+        return Repositorios.PROYECTOS.getAll()
+            .stream().filter(p -> p.getAdmin().getId() == getId()).toList();
     }
 }

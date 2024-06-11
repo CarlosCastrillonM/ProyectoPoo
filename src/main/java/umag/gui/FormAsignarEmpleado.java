@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.repo.Repositorios;
+
 import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,13 +19,21 @@ import java.io.ObjectOutputStream;
  */
 public class FormAsignarEmpleado extends javax.swing.JFrame {
     
-    private PanelAsignarEmpleado pTalHum = new PanelAsignarEmpleado();
-
     /**
      * Creates new form FormMisOfertas
      */
     public FormAsignarEmpleado() {
         initComponents();
+
+        Repositorios.EMPLEADOS.getAll().forEach(oferta -> {
+            javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+            PanelAsignarEmpleado pp = new PanelAsignarEmpleado(oferta);
+
+            jPanel3.add(pp);
+            jPanel3.add(cloneSwingComponent(jSeparator1));
+        });
+
+        jScrollPane2.updateUI();
     }
 
     /**
@@ -165,12 +175,12 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
-        PanelAsignarEmpleado pt = new PanelAsignarEmpleado();
-
-        jPanel3.add(pt);
-        jPanel3.add(cloneSwingComponent(jSeparator2));
-        jScrollPane2.updateUI();
+//        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+//        PanelAsignarEmpleado pt = new PanelAsignarEmpleado();
+//
+//        jPanel3.add(pt);
+//        jPanel3.add(cloneSwingComponent(jSeparator2));
+//        jScrollPane2.updateUI();
         //        this.update(this.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 

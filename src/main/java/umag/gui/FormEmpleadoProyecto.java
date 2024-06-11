@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.auth.Empleado;
+
 import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,14 +18,17 @@ import java.io.ObjectOutputStream;
  * @author carla
  */
 public class FormEmpleadoProyecto extends javax.swing.JFrame {
-    
+
+    private Empleado empleado;
     private PanelProyecto proyectos = new PanelProyecto();
 
     /**
      * Creates new form FormMisOfertas
      */
-    public FormEmpleadoProyecto() {
+    public FormEmpleadoProyecto(Empleado empleado) {
         initComponents();
+
+        this.empleado = empleado;
         this.chkMisProyectos.setEnabled(false);
         this.chkMisProyectos.setSelected(true);
     }
@@ -260,7 +265,7 @@ public class FormEmpleadoProyecto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormEmpleadoProyecto().setVisible(true);
+//                new FormEmpleadoProyecto().setVisible(true);
             }
         });
     }

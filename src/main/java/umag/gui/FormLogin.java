@@ -6,6 +6,7 @@ package umag.gui;
 
 import umag.auth.Admin;
 import umag.auth.Cliente;
+import umag.auth.Cuenta;
 import umag.auth.Empleado;
 import umag.repo.Administradores;
 import umag.repo.Repositorios;
@@ -15,6 +16,8 @@ import umag.repo.Repositorios;
  * @author carla
  */
 public class FormLogin extends javax.swing.JFrame {
+
+    public static Cuenta SESION;
 
     /**
      * Creates new form FormLogin
@@ -351,7 +354,7 @@ public class FormLogin extends javax.swing.JFrame {
         
         for (Cliente cliente : Repositorios.CLIENTES.getAll()) {
             if (cliente.getCorreo().equalsIgnoreCase(txtCorreoElectronico.getText())) {
-                FormPublicarOferta fPublicarOferta = new FormPublicarOferta(cliente);
+                FormPublicarOferta fPublicarOferta = new FormPublicarOferta((Cliente) (SESION = cliente));
                 fPublicarOferta.setVisible(true);
                 this.dispose();
             }
@@ -359,7 +362,7 @@ public class FormLogin extends javax.swing.JFrame {
         
         for (Empleado empleado : Repositorios.EMPLEADOS.getAll()) {
             if (empleado.getCorreo().equalsIgnoreCase(txtCorreoElectronico.getText())) {
-                FormEmpleadoProyecto fEmpleado = new FormEmpleadoProyecto(empleado);
+                FormEmpleadoProyecto fEmpleado = new FormEmpleadoProyecto((Empleado) (SESION = empleado));
                 fEmpleado.setVisible(true);
                 this.dispose();
             }
