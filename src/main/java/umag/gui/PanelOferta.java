@@ -16,8 +16,13 @@ public class PanelOferta extends javax.swing.JPanel {
     /**
      * Creates new form PanelOferta
      */
-    public PanelOferta() {
+    public PanelOferta(Oferta oferta) {
         initComponents();
+        this.oferta = oferta;
+
+        jLabel1.setText(oferta.getNombre());
+        jLabel2.setText(oferta.getDescripcion());
+
     }
 
     /**
@@ -87,7 +92,7 @@ public class PanelOferta extends javax.swing.JPanel {
     private void btnVerMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMasActionPerformed
         // TODO add your handling code here:
         
-        FormOfertaExpandida fOfertaE = new FormOfertaExpandida();
+        FormOfertaExpandida fOfertaE = new FormOfertaExpandida(oferta);
         
         fOfertaE.setVisible(true);
     }//GEN-LAST:event_btnVerMasActionPerformed

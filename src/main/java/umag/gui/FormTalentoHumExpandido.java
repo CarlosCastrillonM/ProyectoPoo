@@ -4,18 +4,34 @@
  */
 package umag.gui;
 
+import umag.auth.Empleado;
+
 /**
  *
  * @author carla
  */
 public class FormTalentoHumExpandido extends javax.swing.JFrame {
 
+    private Empleado empleado;
+
     /**
      * Creates new form FormHojaDeVida
      */
-    public FormTalentoHumExpandido() {
+    public FormTalentoHumExpandido(Empleado empleado) {
         initComponents();
+        this.empleado = empleado;
         this.setLocationRelativeTo(null);
+
+        txtNombre1.setText(empleado.getHojaDeVida().getNombre());
+//        txtNombre2.setText(empleado.getHojaDeVida().getNombre2());
+        txtApellido1.setText(empleado.getHojaDeVida().getApellido());
+//        txtApellido2.setText(empleado.getHojaDeVida().getApellido2());
+        txtCedula.setText(String.valueOf(empleado.getHojaDeVida().getCedula()));
+        txtFechaNacimiento.setText(String.valueOf(empleado.getHojaDeVida().getFechaNacimiento()));
+        txtDireccion.setText(empleado.getHojaDeVida().getDireccion());
+        txtTelefono.setText(String.valueOf(empleado.getHojaDeVida().getTelefono()));
+        txtCorreo.setText(empleado.getHojaDeVida().getCorreo());
+        txtProfesion.setText(empleado.getHojaDeVida().getProfesion());
     }
 
     /**
@@ -275,7 +291,7 @@ public class FormTalentoHumExpandido extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormTalentoHumExpandido().setVisible(true);
+//                new FormTalentoHumExpandido().setVisible(true);
             }
         });
     }

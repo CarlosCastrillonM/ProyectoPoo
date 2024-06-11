@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.auth.Cliente;
+
 /**
  *
  * @author carla
@@ -212,7 +214,7 @@ public class FormPerfilCliente extends javax.swing.JFrame {
     private void chkPublicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPublicarOfertaActionPerformed
         // TODO add your handling code here:
         
-        FormPublicarOferta fPublicarOferta = new FormPublicarOferta();
+        FormPublicarOferta fPublicarOferta = new FormPublicarOferta((Cliente) FormLogin.SESION);
         fPublicarOferta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_chkPublicarOfertaActionPerformed

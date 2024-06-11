@@ -1,5 +1,6 @@
 package umag.datos;
 
+import umag.auth.Admin;
 import umag.auth.Cliente;
 import umag.auth.Empleado;
 import umag.model.Guardable;
@@ -17,15 +18,18 @@ public class Proyecto implements Guardable {
     private String nombre;
     private String descripcion;
     private DeferredVariable<Cliente> cliente;
+    private DeferredVariable<Admin> admin;
     private ArrayList<Empleado> empleados;
 
     private int id_cliente;
+    private int id_admin;
 
-    public Proyecto(int id, String nombre, String descripcion, Cliente cliente, ArrayList<Empleado> empleados) {
+    public Proyecto(int id, String nombre, String descripcion, Cliente cliente, Admin admin, ArrayList<Empleado> empleados) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cliente = new DeferredVariable<>(() -> cliente);
+        this.admin = new DeferredVariable<>(() -> admin);
         this.empleados = empleados;
     }
 
@@ -42,7 +46,9 @@ public class Proyecto implements Guardable {
         nombre = rs.getString("nombre");
         descripcion = rs.getString("descripcion");
         id_cliente = rs.getInt("id_cliente");
+        id_admin = rs.getInt("id_admin");
         cliente = new DeferredVariable<>(() -> Repositorios.CLIENTES.get(id_cliente));
+        admin = new DeferredVariable<>(() -> Repositorios.ADMINISTRADORES.get(id_admin));
     }
 
     public String getNombre() {
@@ -70,5 +76,9 @@ public class Proyecto implements Guardable {
                 id_cliente = ?
             WHERE id_proyecto = ?
             """, nombre, descripcion, cliente.get().getId(), id);
+    }
+
+    public Admin getAdmin() {
+        return admin.get();
     }
 }

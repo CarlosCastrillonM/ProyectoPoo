@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.auth.Empleado;
+import umag.datos.HojaDeVida;
 import umag.datos.Oferta;
 
 /**
@@ -11,13 +13,19 @@ import umag.datos.Oferta;
  * @author kmilo
  */
 public class PanelAsignarEmpleado extends javax.swing.JPanel {
-    private Oferta oferta;
+    private Empleado empleado;
 
     /**
      * Creates new form PanelOferta
      */
-    public PanelAsignarEmpleado() {
+    public PanelAsignarEmpleado(Empleado empleado) {
         initComponents();
+        this.empleado = empleado;
+
+        HojaDeVida hdv = empleado.getHojaDeVida();
+        jLabel1.setText("%s %s".formatted(hdv.getNombre(), hdv.getApellido()));
+        jLabel2.setText(hdv.getProfesion());
+        jLabel3.setText(hdv.getCorreo());
     }
 
     /**
@@ -104,7 +112,7 @@ public class PanelAsignarEmpleado extends javax.swing.JPanel {
     private void btnVerMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerMasActionPerformed
         // TODO add your handling code here:
         
-        FormTalentoHumExpandido fTalHum = new FormTalentoHumExpandido();
+        FormTalentoHumExpandido fTalHum = new FormTalentoHumExpandido(empleado);
         
         fTalHum.setVisible(true);
     }//GEN-LAST:event_btnVerMasActionPerformed

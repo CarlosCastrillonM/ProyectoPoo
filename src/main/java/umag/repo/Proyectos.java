@@ -25,7 +25,7 @@ public class Proyectos extends AbstractRepositorio<Proyecto> {
                 .thenApply(id -> {
                     try {
                         id.next();
-                        return add(new Proyecto(id.getInt(1), nombre, descripcion, cliente, new ArrayList<>()));
+                        return add(new Proyecto(id.getInt(1), nombre, descripcion, cliente, admin, new ArrayList<>()));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

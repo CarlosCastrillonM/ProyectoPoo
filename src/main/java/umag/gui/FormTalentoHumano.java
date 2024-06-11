@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.repo.Repositorios;
+
 import java.awt.Component;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,14 +19,20 @@ import java.io.ObjectOutputStream;
  */
 public class FormTalentoHumano extends javax.swing.JFrame {
     
-    private PanelTalentoHumano pTalHum = new PanelTalentoHumano();
-
     /**
      * Creates new form FormMisOfertas
      */
     public FormTalentoHumano() {
         initComponents();
         opTalentoHumano.setEnabled(false);
+
+        Repositorios.EMPLEADOS.getAll().forEach(oferta -> {
+            javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+            PanelAsignarEmpleado pp = new PanelAsignarEmpleado(oferta);
+
+            jPanel3.add(pp);
+            jPanel3.add(cloneSwingComponent(jSeparator1));
+        });
     }
 
     /**
@@ -175,12 +183,12 @@ public class FormTalentoHumano extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
-        PanelTalentoHumano pt = new PanelTalentoHumano();
-
-        jPanel3.add(pt);
-        jPanel3.add(cloneSwingComponent(jSeparator2));
-        jScrollPane2.updateUI();
+//        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+//        PanelTalentoHumano pt = new PanelTalentoHumano();
+//
+//        jPanel3.add(pt);
+//        jPanel3.add(cloneSwingComponent(jSeparator2));
+//        jScrollPane2.updateUI();
         //        this.update(this.getGraphics());
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -240,7 +248,7 @@ public class FormTalentoHumano extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormTalentoHumano().setVisible(true);
+//                new FormTalentoHumano().setVisible(true);
             }
         });
     }

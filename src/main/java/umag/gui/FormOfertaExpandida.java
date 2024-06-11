@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.datos.Oferta;
+
 /**
  *
  * @author carla
@@ -13,8 +15,15 @@ public class FormOfertaExpandida extends javax.swing.JFrame {
     /**
      * Creates new form FormOfertaExpandida
      */
-    public FormOfertaExpandida() {
+    public FormOfertaExpandida(Oferta oferta) {
         initComponents();
+
+        lblTitulo.setText(oferta.getNombre());
+        areaTxt.setText(oferta.getDescripcion());
+        txtExperiencia.setText(oferta.getExperiencia());
+        txtLugarTrabajo.setText(oferta.getLugarDeTrabajo());
+        txtJornada.setText(oferta.getJornada());
+        txtSalario.setText(String.valueOf(oferta.getSalario()));
     }
 
     /**
@@ -224,7 +233,7 @@ public class FormOfertaExpandida extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormOfertaExpandida().setVisible(true);
+//                new FormOfertaExpandida().setVisible(true);
             }
         });
     }

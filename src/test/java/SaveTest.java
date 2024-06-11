@@ -14,8 +14,8 @@ public class SaveTest {
 
     @Test
     public void saveOfertas() {
-        Repositorios.OFERTAS.crearOferta("Oferta 1", "Descripcion 1").join();
-        Repositorios.OFERTAS.crearOferta("Oferta 2", "Descripcion 2").join();
+        Repositorios.OFERTAS.crearOferta("Oferta 3", "ajklsdhaklsjdhaslkj", "Mañana", "Si", "tierra", 1000000).join();
+        Repositorios.OFERTAS.crearOferta("Oferta 4", "alkjsdha lksjdlk jasdl fkjashdlfk jasdflkja", "Tarde", "No", "agua", -1).join();
     }
 
     @Test

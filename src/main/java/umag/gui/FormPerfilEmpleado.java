@@ -4,6 +4,8 @@
  */
 package umag.gui;
 
+import umag.auth.Empleado;
+
 /**
  *
  * @author carla
@@ -204,7 +206,7 @@ public class FormPerfilEmpleado extends javax.swing.JFrame {
     private void chkMisOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMisOfertasActionPerformed
         // TODO add your handling code here:
         
-        FormEmpleadoProyecto fEmpleado = new FormEmpleadoProyecto();
+        FormEmpleadoProyecto fEmpleado = new FormEmpleadoProyecto((Empleado) FormLogin.SESION);
         fEmpleado.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_chkMisOfertasActionPerformed
