@@ -15,15 +15,17 @@ import java.io.ObjectOutputStream;
  *
  * @author carla
  */
-public class FormAsignarEmpleado extends javax.swing.JFrame {
+public class FormEmpleadoProyecto extends javax.swing.JFrame {
     
-    private PanelAsignarEmpleado pTalHum = new PanelAsignarEmpleado();
+    private PanelProyecto proyectos = new PanelProyecto();
 
     /**
      * Creates new form FormMisOfertas
      */
-    public FormAsignarEmpleado() {
+    public FormEmpleadoProyecto() {
         initComponents();
+        this.chkMisProyectos.setEnabled(false);
+        this.chkMisProyectos.setSelected(true);
     }
 
     /**
@@ -42,11 +44,13 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jSeparator2 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
+        menuPanel1 = new javax.swing.JPanel();
+        chkPerfil = new javax.swing.JCheckBox();
+        chkMisProyectos = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
 
         contenedor.setBackground(new java.awt.Color(255, 204, 204));
         contenedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -91,9 +95,56 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
         jSeparator2.setOpaque(true);
         jSeparator2.setPreferredSize(new java.awt.Dimension(0, 15));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(117, 171, 255));
+
+        menuPanel1.setBackground(new java.awt.Color(0, 153, 255));
+
+        chkPerfil.setText("Perfil");
+        chkPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPerfilActionPerformed(evt);
+            }
+        });
+
+        chkMisProyectos.setText("Ver Mis Proyectos");
+        chkMisProyectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMisProyectosActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuPanel1Layout = new javax.swing.GroupLayout(menuPanel1);
+        menuPanel1.setLayout(menuPanel1Layout);
+        menuPanel1Layout.setHorizontalGroup(
+            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(chkMisProyectos)
+                    .addComponent(chkPerfil))
+                .addContainerGap(69, Short.MAX_VALUE))
+        );
+        menuPanel1Layout.setVerticalGroup(
+            menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanel1Layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(chkMisProyectos)
+                .addGap(18, 18, 18)
+                .addComponent(chkPerfil)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(102, 102, 102))
+        );
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -106,45 +157,23 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jPanel3);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        btnVolver.setText("Volver");
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(btnVolver))
+                .addComponent(menuPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menuPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(btnVolver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,23 +191,6 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
-        PanelAsignarEmpleado pt = new PanelAsignarEmpleado();
-
-        jPanel3.add(pt);
-        jPanel3.add(cloneSwingComponent(jSeparator2));
-        jScrollPane2.updateUI();
-        //        this.update(this.getGraphics());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
-
     private <C extends Component> C cloneSwingComponent(C c) {
     try {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -193,6 +205,30 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
     }
 }
     
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        javax.swing.JSeparator jSeparator1 = new javax.swing.JSeparator();
+        PanelProyecto pp = new PanelProyecto();
+        
+        jPanel3.add(pp);
+        jPanel3.add(cloneSwingComponent(jSeparator2));
+        jScrollPane2.updateUI();
+//        this.update(this.getGraphics());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chkPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerfilActionPerformed
+        // TODO add your handling code here:
+
+        FormPerfilCliente fPerfilCliente = new FormPerfilCliente();
+        fPerfilCliente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_chkPerfilActionPerformed
+
+    private void chkMisProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMisProyectosActionPerformed
+
+    }//GEN-LAST:event_chkMisProyectosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,41 +246,28 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormAsignarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEmpleadoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormAsignarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEmpleadoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormAsignarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEmpleadoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormAsignarEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormEmpleadoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormAsignarEmpleado().setVisible(true);
+                new FormEmpleadoProyecto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnVolver;
+    private javax.swing.JCheckBox chkMisProyectos;
+    private javax.swing.JCheckBox chkPerfil;
     private javax.swing.JPanel contenedor;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
@@ -256,5 +279,6 @@ public class FormAsignarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel menuPanel1;
     // End of variables declaration//GEN-END:variables
 }

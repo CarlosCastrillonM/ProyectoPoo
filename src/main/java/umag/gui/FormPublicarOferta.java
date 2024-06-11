@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package umag.gui;
-
+import umag.auth.Cliente;
 /**
  *
  * @author carla
@@ -13,7 +13,7 @@ public class FormPublicarOferta extends javax.swing.JFrame {
     /**
      * Creates new form FormCrearProyecto
      */
-    public FormPublicarOferta() {
+    public FormPublicarOferta(Cliente cliente) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.chkPublicarOferta.setEnabled(false);
@@ -287,7 +287,7 @@ public class FormPublicarOferta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPublicarOferta().setVisible(true);
+                //new FormPublicarOferta().setVisible(true);
             }
         });
     }

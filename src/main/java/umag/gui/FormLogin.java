@@ -4,6 +4,12 @@
  */
 package umag.gui;
 
+import umag.auth.Admin;
+import umag.auth.Cliente;
+import umag.auth.Empleado;
+import umag.repo.Administradores;
+import umag.repo.Repositorios;
+
 /**
  *
  * @author carla
@@ -45,7 +51,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnAqui = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
 
         panelFondo.setBackground(new java.awt.Color(80, 188, 225));
@@ -113,6 +119,11 @@ public class FormLogin extends javax.swing.JFrame {
         );
 
         btnAcceder.setText("Acceder");
+        btnAcceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccederActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -326,6 +337,37 @@ public class FormLogin extends javax.swing.JFrame {
         fRegCliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAquiActionPerformed
+
+    private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
+        // TODO add your handling code here:
+        
+        for (Admin admin : Repositorios.ADMINISTRADORES.getAll()) {
+            if (admin.getCorreo().equalsIgnoreCase(txtCorreoElectronico.getText())) {
+                FormAdmin fAdmin = new FormAdmin();
+                fAdmin.setVisible(true);
+                this.dispose();
+            }
+        }
+        
+        for (Cliente cliente : Repositorios.CLIENTES.getAll()) {
+            if (cliente.getCorreo().equalsIgnoreCase(txtCorreoElectronico.getText())) {
+                FormPublicarOferta fPublicarOferta = new FormPublicarOferta(cliente);
+                fPublicarOferta.setVisible(true);
+                this.dispose();
+            }
+        }
+        
+        for (Empleado empleado : Repositorios.EMPLEADOS.getAll()) {
+            if (empleado.getCorreo().equalsIgnoreCase(txtCorreoElectronico.getText())) {
+                FormEmpleadoProyecto fEmpleado = new FormEmpleadoProyecto(empleado);
+                fEmpleado.setVisible(true);
+                this.dispose();
+            }
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnAccederActionPerformed
 
     /**
      * @param args the command line arguments

@@ -54,6 +54,7 @@ public class FormOfertaExpandida extends javax.swing.JFrame {
 
         areaTxt.setColumns(20);
         areaTxt.setRows(5);
+        areaTxt.setEnabled(false);
         scrollDescripcion.setViewportView(areaTxt);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -188,7 +189,7 @@ public class FormOfertaExpandida extends javax.swing.JFrame {
     private void btnAsignarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarEmpleadoActionPerformed
         // TODO add your handling code here:
         
-        PanelAsignarEmpleado pAsignarEmp = new PanelAsignarEmpleado();
+        FormAsignarEmpleado pAsignarEmp = new FormAsignarEmpleado();
         
         pAsignarEmp.setVisible(true);
     }//GEN-LAST:event_btnAsignarEmpleadoActionPerformed

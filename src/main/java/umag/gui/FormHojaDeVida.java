@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package umag.gui;
-
+import java.util.Date;
+import javax.swing.JOptionPane;
+import umag.datos.HojaDeVida;
+import umag.repo.Repositorios;
 /**
  *
  * @author carla
@@ -46,7 +49,7 @@ public class FormHojaDeVida extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtProfesion = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSubir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
 
@@ -79,6 +82,13 @@ public class FormHojaDeVida extends javax.swing.JFrame {
         lblCedula.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblCedula.setText("Cédula");
 
+        txtNombre2.setText("Opcional");
+        txtNombre2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombre2MouseClicked(evt);
+            }
+        });
+
         txtFechaNacimiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFechaNacimiento.setText("dd/mm/aaaa");
         txtFechaNacimiento.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -92,7 +102,12 @@ public class FormHojaDeVida extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Subir");
+        btnSubir.setText("Subir");
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/curriculumIcon.png"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -120,7 +135,7 @@ public class FormHojaDeVida extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(btnSubir)
                         .addGap(205, 205, 205))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -212,7 +227,7 @@ public class FormHojaDeVida extends javax.swing.JFrame {
                     .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSubir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -238,6 +253,50 @@ public class FormHojaDeVida extends javax.swing.JFrame {
         fLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            String sNombre = "";
+
+            String pNombre = txtNombre1.getText();
+            sNombre = txtNombre2.getText();
+            String pApellido = txtApellido1.getText();
+            String sApellido = txtApellido1.getText();
+
+            int cedula = Integer.parseInt(txtCedula.getText());
+            
+            int dia, mes, year;
+            
+            dia = Integer.parseInt(txtFechaNacimiento.getText().substring(1, 2));
+            mes = Integer.parseInt(txtFechaNacimiento.getText().substring(4, 5));
+            year = Integer.parseInt(txtFechaNacimiento.getText().substring(7, 10));
+            
+            Date fechaNacimiento = new Date(year, mes, dia);
+            
+            String direccion = txtDireccion.getText();
+            int telefono = Integer.parseInt(txtTelefono.getText());
+            String correo = txtCorreo.getText();
+            String profesion = txtProfesion.getText();
+            
+            
+            HojaDeVida hdv = Repositorios.HOJAS_VIDA.crearHojaDeVida(pNombre, sApellido, cedula, fechaNacimiento, correo, telefono, direccion, profesion).join();
+            Repositorios.EMPLEADOS.crearEmpleado(correo, hdv);
+        
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnSubirActionPerformed
+
+    private void txtNombre2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombre2MouseClicked
+        // TODO add your handling code here:
+        txtNombre2.setText("");
+    }//GEN-LAST:event_txtNombre2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -276,7 +335,7 @@ public class FormHojaDeVida extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSubir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblCedula;

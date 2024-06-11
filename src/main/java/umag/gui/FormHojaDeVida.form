@@ -36,7 +36,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnAtras" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSubir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -159,7 +159,7 @@
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton1" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnSubir" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="btnAtras" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="14" max="32767" attributes="0"/>
@@ -243,6 +243,12 @@
     <Component class="javax.swing.JTextField" name="txtNombre1">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombre2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Opcional"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtNombre2MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApellido1">
     </Component>
@@ -268,10 +274,13 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtProfesion">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSubir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Subir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

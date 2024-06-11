@@ -8,13 +8,16 @@ package umag.gui;
  *
  * @author carla
  */
-public class FormPerfilCliente extends javax.swing.JFrame {
+public class FormPerfilEmpleado extends javax.swing.JFrame {
 
     /**
      * Creates new form FormPerfilCliente
      */
-    public FormPerfilCliente() {
+    public FormPerfilEmpleado() {
         initComponents();
+        
+        
+        
         this.chkPerfil.setEnabled(false);
         this.chkPerfil.setSelected(true);
     }
@@ -41,7 +44,6 @@ public class FormPerfilCliente extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         menuPanel1 = new javax.swing.JPanel();
-        chkPublicarOferta = new javax.swing.JCheckBox();
         chkPerfil = new javax.swing.JCheckBox();
         chkMisOfertas = new javax.swing.JCheckBox();
 
@@ -89,7 +91,7 @@ public class FormPerfilCliente extends javax.swing.JFrame {
         userProfileIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userProfileIcon.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Nombre Empresa");
+        jLabel1.setText("Nombre");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Usuario");
@@ -104,13 +106,6 @@ public class FormPerfilCliente extends javax.swing.JFrame {
         txtCorreo.setEnabled(false);
 
         menuPanel1.setBackground(new java.awt.Color(0, 153, 255));
-
-        chkPublicarOferta.setText("Publicar Oferta");
-        chkPublicarOferta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkPublicarOfertaActionPerformed(evt);
-            }
-        });
 
         chkPerfil.setText("Perfil");
         chkPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -134,20 +129,17 @@ public class FormPerfilCliente extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addGroup(menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkMisOfertas)
-                    .addComponent(chkPerfil)
-                    .addComponent(chkPublicarOferta))
+                    .addComponent(chkPerfil))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         menuPanel1Layout.setVerticalGroup(
             menuPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanel1Layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(chkPublicarOferta)
-                .addGap(18, 18, 18)
+                .addGap(237, 237, 237)
                 .addComponent(chkMisOfertas)
                 .addGap(18, 18, 18)
                 .addComponent(chkPerfil)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -209,29 +201,20 @@ public class FormPerfilCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_chkbox1ActionPerformed
 
-    private void chkPublicarOfertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPublicarOfertaActionPerformed
-        // TODO add your handling code here:
-        
-        FormPublicarOferta fPublicarOferta = new FormPublicarOferta();
-        fPublicarOferta.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_chkPublicarOfertaActionPerformed
-
     private void chkMisOfertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMisOfertasActionPerformed
         // TODO add your handling code here:
         
-        FormMisOfertas fMisOfertas = new FormMisOfertas();
-        fMisOfertas.setVisible(true);
+        FormEmpleadoProyecto fEmpleado = new FormEmpleadoProyecto();
+        fEmpleado.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_chkMisOfertasActionPerformed
 
     private void chkPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerfilActionPerformed
-        // TODO add your handling code here:
-        
-        chkPublicarOferta.setSelected(false);
-        chkMisOfertas.setSelected(false);
+
     }//GEN-LAST:event_chkPerfilActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -249,20 +232,21 @@ public class FormPerfilCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormPerfilCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPerfilEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormPerfilCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPerfilEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormPerfilCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPerfilEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormPerfilCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPerfilEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPerfilCliente().setVisible(true);
+                new FormPerfilEmpleado().setVisible(true);
             }
         });
     }
@@ -270,7 +254,6 @@ public class FormPerfilCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkMisOfertas;
     private javax.swing.JCheckBox chkPerfil;
-    private javax.swing.JCheckBox chkPublicarOferta;
     private javax.swing.JCheckBox chkbox1;
     private javax.swing.JCheckBox chkbox2;
     private javax.swing.JCheckBox chkbox3;
