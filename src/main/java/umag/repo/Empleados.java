@@ -24,14 +24,18 @@ public class Empleados extends AbstractRepositorio<Empleado> {
         String correo = hdv.getCorreo();
         return SQLManager.executeQuery("""
                 INSERT INTO cuenta (correo, usuario, tipo) VALUES (?, ?, ?) RETURNING id_cuenta""", correo, usuario, "empleado")
-                .thenCompose(id -> SQLManager.executeQuery("INSERT INTO empleados (id_empleado, id_hoja_de_vida) VALUES (?, ?)", id, hdv.getId()).thenApply(v -> {
+                .thenCompose(rs -> {
+                    int id;
                     try {
-                        id.next();
-                        return id.getInt(1);
+                        rs.next();
+                        id = rs.getInt(1);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                }))
-                .thenApply(id -> new Empleado(id, usuario, correo, hdv));
+                    return SQLManager.executeQuery(
+                        "INSERT INTO empleados (id_empleado, id_hoja_de_vida) VALUES (?, ?)", id, hdv.getId())
+                        .thenApply(v -> id);
+                })
+                .thenApply(id -> add(new Empleado(id, usuario, correo, hdv)));
     }
 }
