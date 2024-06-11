@@ -34,7 +34,6 @@ public class FormHojaDeVida extends javax.swing.JFrame {
         lblTelefono = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
         lblProfesion = new javax.swing.JLabel();
-        lblAptitudes = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
         txtNombre1 = new javax.swing.JTextField();
@@ -47,7 +46,6 @@ public class FormHojaDeVida extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtProfesion = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
@@ -75,9 +73,6 @@ public class FormHojaDeVida extends javax.swing.JFrame {
         lblProfesion.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblProfesion.setText("Profesión");
 
-        lblAptitudes.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        lblAptitudes.setText("Aptitudes");
-
         lblApellido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         lblApellido.setText("Apellido");
 
@@ -96,8 +91,6 @@ public class FormHojaDeVida extends javax.swing.JFrame {
                 txtFechaNacimientoMouseClicked(evt);
             }
         });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton1.setText("Subir");
 
@@ -133,7 +126,6 @@ public class FormHojaDeVida extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCedula)
                             .addComponent(lblApellido)
-                            .addComponent(lblAptitudes)
                             .addComponent(lblProfesion)
                             .addComponent(lblCorreo)
                             .addComponent(lblTelefono)
@@ -171,10 +163,7 @@ public class FormHojaDeVida extends javax.swing.JFrame {
                                         .addGap(57, 57, 57)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(92, 92, 92)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
@@ -210,27 +199,22 @@ public class FormHojaDeVida extends javax.swing.JFrame {
                     .addComponent(lblDirección)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTelefono)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCorreo)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProfesion)
+                    .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTelefono)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCorreo)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblProfesion)
-                            .addComponent(txtProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAptitudes)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,10 +277,8 @@ public class FormHojaDeVida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblAptitudes;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblDirección;
