@@ -50,10 +50,10 @@ public abstract class Cuenta implements Guardable {
 
     @Override
     public void loadRow(ResultSet rs) throws SQLException {
-        id = rs.getInt("cuenta.id_cuenta");
-        usuario = rs.getString("cuenta.usuario");
-        tipo = rs.getString("cuenta.tipo");
-        correo = rs.getString("cuenta.correo");
+        id = rs.getInt("id_cuenta");
+        usuario = rs.getString("usuario");
+        tipo = rs.getString("tipo");
+        correo = rs.getString("correo");
         loadRowAttributes(rs);
     }
 

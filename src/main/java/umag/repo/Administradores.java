@@ -20,7 +20,6 @@ public class Administradores extends AbstractRepositorio<Admin> {
         return SQLManager.executeQuery("""
                 INSERT INTO cuenta (correo, usuario, tipo) VALUES (?, ?, ?) RETURNING id_cuenta""", correo, usuario, "admin")
                 .thenCompose(rs -> {
-                    System.out.println("a");
                     int id;
                     try {
                         rs.next();
@@ -28,9 +27,8 @@ public class Administradores extends AbstractRepositorio<Admin> {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println("id: " + id);
-                    return SQLManager.executeQuery("INSERT INTO admin (id_admin) VALUES (?)", id).thenApply(v -> id);
+                    return SQLManager.executeUpdate("INSERT INTO admin (id_admin) VALUES (?)", id).thenApply(v -> id);
                 })
-                .thenApply(id -> new Admin(id, usuario, correo));
+                .thenApply(id -> add(new Admin(id, usuario, correo)));
     }
 }
